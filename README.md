@@ -26,7 +26,7 @@ performance, it's the go-to solution for managing Redis data efficiently and eff
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/yourusername/redis-utility-tool.git
+    git clone https://github.com/TecnicoR/redis-utility-tool.git
     cd redis-utility-tool
     ```
 
