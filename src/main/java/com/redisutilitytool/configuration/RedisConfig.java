@@ -9,8 +9,11 @@ import io.lettuce.core.RedisURI;
 import io.lettuce.core.api.sync.RedisCommands;
 import io.lettuce.core.codec.StringCodec;
 import io.lettuce.core.masterreplica.MasterReplica;
+import io.lettuce.core.masterreplica.StatefulRedisMasterReplicaConnection;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
+@Slf4j
 public class RedisConfig {
   @Value( "${spring.data.redis.host}" )
   private String redisHost;
@@ -19,7 +22,12 @@ public class RedisConfig {
 
   @Bean
   public RedisCommands<String, String> redisReactiveCommands() {
-    return MasterReplica.connect( RedisClient.create(), StringCodec.UTF8, RedisURI.create( redisHost, redisPort ) )
-        .sync();
+    RedisURI redisURI = RedisURI.create( redisHost, redisPort );
+    RedisClient redisClient = RedisClient.create( redisURI );
+    StatefulRedisMasterReplicaConnection<String, String> connect = MasterReplica.connect( redisClient, StringCodec.UTF8,
+        redisURI );
+    log.info( "Attempting Redis connection - Host: {}, Port: {}, Connection Status: {}", redisURI.getHost(),
+        redisURI.getPort(), connect.isOpen() ? "Successfully Connected" : "Not Connected" );
+    return connect.sync();
   }
 }
