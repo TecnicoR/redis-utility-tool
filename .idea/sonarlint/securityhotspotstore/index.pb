@@ -50,3 +50,5 @@ Q.idea/sonarlint/securityhotspotstore/a/5/a5cc2925ca8258af241be7e5b0381edf302663
 Q.idea/sonarlint/securityhotspotstore/a/a/aa676424bb97ce812fda50881eb64fadab41bdaf,2\0\2019178e0c668b6311d5fc683ee9e6b8a24f1f15
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+q
+Asrc/main/java/com/redisutilitytool/configuration/RedisConfig.java,b\c\bcc0ed16e9d4c3f752862a888ea547416a0763ed
